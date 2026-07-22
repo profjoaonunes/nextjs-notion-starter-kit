@@ -24,7 +24,7 @@ const socialLinks: SocialLink[] = [
     )
   },
 
-  config.lattes&&{
+{
     name: 'lattes',
     href: 'http://lattes.cnpq.br/1583821044060752',
     title: 'Currículo Lattes',
@@ -35,7 +35,7 @@ const socialLinks: SocialLink[] = [
     )
   },
 
-  config.researchgate && {
+{
     name: 'researchgate',
     href: 'https://www.researchgate.net/profile/Joao-Vitor-Nunes?ev=hdr_xprf',
     title: 'ResearchGate',
