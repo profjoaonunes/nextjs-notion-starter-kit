@@ -1,4 +1,5 @@
 import type * as React from 'react'
+import { useEffect, useState } from 'react'
 import cs from 'classnames'
 
 import * as config from '@/lib/config'
@@ -6,11 +7,22 @@ import * as config from '@/lib/config'
 import styles from './PageSocial.module.css'
 
 export function PageSocial() {
+  const [mounted, setMounted] = useState(false)
+
+  // Evita o erro de Hydration (#418) renderizando após a montagem do componente
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return null
+  }
+
   return (
     <div className={styles.pageSocial}>
-      {/* Lattes usando a estrutura e classe do Twitter */}
+      {/* Currículo Lattes */}
       <a
-        className={cs(styles.action, styles.twitter)}
+        className={cs(styles.action, styles.lattes)}
         href="http://lattes.cnpq.br/1583821044060752"
         key="lattes"
         title="Currículo Lattes"
@@ -20,16 +32,16 @@ export function PageSocial() {
         <div className={styles.actionBg}>
           <div className={styles.actionBgPane} />
         </div>
-        <div className={styles.actionBg}>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <div className={styles.actionBg} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
             <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4l7 3.82 7-3.82v-4L12 17l-7-3.82z" />
           </svg>
         </div>
       </a>
 
-      {/* ResearchGate usando a estrutura e classe do Github */}
+      {/* ResearchGate */}
       <a
-        className={cs(styles.action, styles.github)}
+        className={cs(styles.action, styles.researchgate)}
         href="https://www.researchgate.net/profile/Joao-Vitor-Nunes?ev=hdr_xprf"
         key="researchgate"
         title="ResearchGate"
@@ -39,14 +51,14 @@ export function PageSocial() {
         <div className={styles.actionBg}>
           <div className={styles.actionBgPane} />
         </div>
-        <div className={styles.actionBg}>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <div className={styles.actionBg} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
             <path d="M19.54 6.74c-.42 0-.82.12-1.15.34l-3.26-1.9a2.53 2.53 0 0 0-2.61-2.62c-1.4 0-2.54 1.14-2.54 2.54 0 .34.07.66.2.96L7.33 8.28a2.53 2.53 0 0 0-2.27-1.41c-1.4 0-2.54 1.14-2.54 2.54s1.14 2.54 2.54 2.54c.94 0 1.76-.52 2.19-1.29l2.88 1.68c-.05.18-.08.37-.08.56 0 1.4 1.14 2.54 2.54 2.54s2.54-1.14 2.54-2.54c0-.36-.08-.71-.22-1.01l3.18-1.85c.35.26.78.42 1.25.42 1.14 0 2.07-.93 2.07-2.07s-.93-2.07-2.07-2.07z"/>
           </svg>
         </div>
       </a>
 
-      {/* LinkedIn original */}
+      {/* LinkedIn */}
       {config.linkedin && (
         <a
           className={cs(styles.action, styles.linkedin)}
