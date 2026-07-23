@@ -9,7 +9,6 @@ import styles from './PageSocial.module.css'
 export function PageSocial() {
   const [mounted, setMounted] = useState(false)
 
-  // Evita o erro de Hydration (#418) renderizando após a montagem do componente
   useEffect(() => {
     setMounted(true)
   }, [])
@@ -20,6 +19,9 @@ export function PageSocial() {
 
   return (
     <div className={styles.pageSocial}>
+      {/* COLOQUE O TESTE AQUI, LOGO ABAIXO DA DIV: */}
+      <p style={{ color: 'red', fontWeight: 'bold' }}>TESTE DE ATUALIZAÇÃO</p>
+
       {/* Currículo Lattes */}
       <a
         className={cs(styles.action, styles.lattes)}
